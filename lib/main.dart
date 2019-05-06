@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:upg_fisi/screens/home_page.dart';
-import 'package:upg_fisi/app_constants.dart';
+import 'package:practica1/screens/home_page.dart';
+import 'package:practica1/app_constants.dart';
 
 const PrimaryColor = const Color(0xFF06006D);
 

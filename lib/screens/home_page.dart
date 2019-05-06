@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:upg_fisi/app_constants.dart';
-import 'package:upg_fisi/screens/course_list.dart';
-import 'package:upg_fisi/screens/student_list.dart';
+import 'package:practica1/app_constants.dart';
+import 'package:practica1/screens/course_list.dart';
+import 'package:practica1/screens/student_list.dart';
 
 class HomePage extends StatefulWidget {
   @override

@@ -1,7 +1,7 @@
-import 'package:upg_fisi/infrastructure/student_dao.dart';
-import 'package:upg_fisi/infrastructure/student_repository.dart';
-import 'package:upg_fisi/infrastructure/database_provider.dart';
-import 'package:upg_fisi/model/student.dart';
+import 'package:practica1/infrastructure/student_dao.dart';
+import 'package:practica1/infrastructure/student_repository.dart';
+import 'package:practica1/infrastructure/database_provider.dart';
+import 'package:practica1/model/student.dart';
 
 class StudentSqfliteRepository implements StudentRepository {
   final dao = StudentDao();

@@ -1,5 +1,5 @@
-import 'package:upg_fisi/infrastructure/dao.dart';
-import 'package:upg_fisi/model/course.dart';
+import 'package:practica1/infrastructure/dao.dart';
+import 'package:practica1/model/course.dart';
 
 class CourseDao implements Dao<Course> {
   final tableName = 'courses';

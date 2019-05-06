@@ -1,7 +1,7 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:upg_fisi/infrastructure/course_dao.dart';
-import 'package:upg_fisi/infrastructure/student_dao.dart';
+import 'package:practica1/infrastructure/course_dao.dart';
+import 'package:practica1/infrastructure/student_dao.dart';
 
 class DatabaseProvider {
   static final _instance = DatabaseProvider._internal();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:upg_fisi/infrastructure/course_sqflite_repository.dart';
-import 'package:upg_fisi/infrastructure/database_provider.dart';
-import 'package:upg_fisi/model/course.dart';
+import 'package:practica1/infrastructure/course_sqflite_repository.dart';
+import 'package:practica1/infrastructure/database_provider.dart';
+import 'package:practica1/model/course.dart';
 
 CourseSqfliteRepository courseRepository = CourseSqfliteRepository(DatabaseProvider.get);
 final List<String> choices = const <String> [

@@ -1,0 +1,4 @@
+com.example.upg_fisi
+drawable launch_background
+mipmap ic_launcher
+style LaunchTheme

@@ -1,5 +1,5 @@
-import 'package:upg_fisi/infrastructure/database_provider.dart';
-import 'package:upg_fisi/model/course.dart';
+import 'package:practica1/infrastructure/database_provider.dart';
+import 'package:practica1/model/course.dart';
 
 abstract class CourseRepository {
   DatabaseProvider databaseProvider;

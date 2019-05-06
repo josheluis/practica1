@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:upg_fisi/infrastructure/course_sqflite_repository.dart';
-import 'package:upg_fisi/infrastructure/database_provider.dart';
-import 'package:upg_fisi/model/course.dart';
-import 'package:upg_fisi/screens/course_detail.dart';
+import 'package:practica1/infrastructure/course_sqflite_repository.dart';
+import 'package:practica1/infrastructure/database_provider.dart';
+import 'package:practica1/model/course.dart';
+import 'package:practica1/screens/course_detail.dart';
 
 class CourseList extends StatefulWidget {
   @override

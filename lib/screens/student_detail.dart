@@ -25,10 +25,6 @@ class StudentDetail extends StatefulWidget {
 class StudentDetailState extends State<StudentDetail> {
   Student student;
   StudentDetailState(this.student);
-  final _semesterList = [1, 2, 3, 4];
-  final _creditList = [3, 4, 6, 8, 10];
-  int _semester = 1;
-  int _credits = 4;
   TextEditingController namesController = TextEditingController();
   TextEditingController codigoController = TextEditingController();
   TextEditingController apePaternoController = TextEditingController();
@@ -43,11 +39,14 @@ class StudentDetailState extends State<StudentDetail> {
     apeMaternoController.text = student.apematerno;
     dniController.text = student.dni;
 
+    //TextStyle textStyle = Theme.of(context).textTheme.title;
     TextStyle textStyle = Theme.of(context).textTheme.title;
+    TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(student.names),
+        title: Text('Alumno: ' + student.names + ' ' + student.apepaterno),
         actions: <Widget>[
           PopupMenuButton<String>(
             onSelected: select,
@@ -66,68 +65,106 @@ class StudentDetailState extends State<StudentDetail> {
         padding: EdgeInsets.only(top:35.0, left: 10.0, right: 10.0),
         child: ListView(children: <Widget>[Column(
         children: <Widget>[
-          TextField(
-            controller: codigoController,
-            style: textStyle,
-            onChanged: (value) => this.updateNames(),
-            decoration: InputDecoration(
-              labelText: "Código:",
-              labelStyle: textStyle,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(5.0),
-              )
-            ),
-          ),          
-          TextField(
-            controller: namesController,
-            style: textStyle,
-            onChanged: (value) => this.updateNames(),
-            decoration: InputDecoration(
-              labelText: "Nombres",
-              labelStyle: textStyle,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(5.0),
-              )
-            ),
-          ),
-          TextField(
-            controller: apePaternoController,
-            style: textStyle,
-            onChanged: (value) => this.updateNames(),
-            decoration: InputDecoration(
-              labelText: "Apellido Paterno:",
-              labelStyle: textStyle,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(5.0),
-              )
-            ),
-          ),
-          TextField(
+          Padding(
+            padding:  EdgeInsets.only(top:10.0, bottom: 0.0),
+            child:  
+                  TextField(
+                    controller: codigoController,
+                    style: textStyle,
+                    onChanged: (value) => this.updateCodigo(),
+                    decoration: InputDecoration(
+                      labelText: "Código:",
+                      labelStyle: textStyle,
+                      hintText: 'Ingrese el código',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      )
+                    ),
+                  )),          
+          Padding(
+            padding: EdgeInsets.only(top:10.0, bottom: 0.0),
+            child:
+            TextField(
+                controller: namesController,
+                style: textStyle,
+                onChanged: (value) => this.updateNames(),
+                decoration: InputDecoration(
+                  labelText: "Nombres",
+                  labelStyle: textStyle,
+                  hintText: 'Ingrese los nombres',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                  )
+                ),
+                  )),
+          Padding(
+            padding: EdgeInsets.only(top: 10.0, bottom: 0.0),
+            child:        
+                  TextField(
+                    controller: apePaternoController,
+                    style: textStyle,
+                    onChanged: (value) => this.updateApepaterno(),               
+                    decoration: InputDecoration(
+                      labelText: "Apellido Paterno:",
+                      labelStyle: textStyle,
+                      hintText: 'Ingrese apellido paterno',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      )
+                    ),
+          )),
+          Padding(
+            padding: EdgeInsets.only(top: 10.0, bottom: 0.0),
+            child: 
+            TextField(
             controller: apeMaternoController,
             style: textStyle,
-            onChanged: (value) => this.updateNames(),
+            onChanged: (value) => this.updateApematerno(),
             decoration: InputDecoration(
               labelText: "Apellido Materno:",
               labelStyle: textStyle,
+              hintText: 'Ingrese apellido materno',
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(5.0),
               )
             ),
+          )),
+
+          Padding(
+            padding: EdgeInsets.only(top: 10.0, bottom: 0.0),
+            child:           
+                  TextField(
+                    controller: dniController,
+                    style: textStyle,
+                    onChanged: (value) => this.updateDNI(),
+                    decoration: InputDecoration(
+                      labelText: "DNI:",
+                      labelStyle: textStyle,
+                      hintText: 'Ingrese el DNI',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      )
+                    ),
+                  )),
+
+          Padding(
+            padding: EdgeInsets.only(top: 10.0, bottom: 0.0),
+            child: Material(
+                            elevation: 5.0,
+                            borderRadius: BorderRadius.circular(10.0),
+                            color: Color(0xff01A0C7),
+                            child: MaterialButton(
+                              minWidth: MediaQuery.of(context).size.width,
+                              padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                              onPressed: () => save(),
+                              child: Text("agregar alumno",
+                                  textAlign: TextAlign.center,
+                                  style: style.copyWith(
+                                      color: Colors.white, fontWeight: FontWeight.bold)),
+                            ),
+        )
+            
           ),
-
-          TextField(
-            controller: dniController,
-            style: textStyle,
-            onChanged: (value) => this.updateNames(),
-            decoration: InputDecoration(
-              labelText: "DNI:",
-              labelStyle: textStyle,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(5.0),
-              )
-            ),
-          )
-
 
           
         ],
@@ -179,14 +216,25 @@ class StudentDetailState extends State<StudentDetail> {
   }
 
 
-
-  int retrieveSemester(int value) {
-    return _semesterList[value-1];
+  void updateCodigo(){
+    student.codigo = codigoController.text;
   }
 
   void updateNames(){
     student.names = namesController.text;
   }
+  
+  void updateApepaterno(){
+    student.apepaterno = apePaternoController.text;
+  }
 
+  void updateApematerno(){
+    student.apematerno = apeMaternoController.text;
+  }
+
+  void updateDNI(){
+    student.dni = dniController.text;
+  }
+        
 
 }

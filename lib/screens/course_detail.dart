@@ -4,6 +4,7 @@ import 'package:practica1/infrastructure/database_provider.dart';
 import 'package:practica1/model/course.dart';
 
 CourseSqfliteRepository courseRepository = CourseSqfliteRepository(DatabaseProvider.get);
+
 final List<String> choices = const <String> [
   'Save Course & Back',
   'Delete Course',
